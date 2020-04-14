@@ -27,7 +27,7 @@ const ordenarFecha = async() =>{
             }
             let month
             let year
-            const fecha = processParams.fecha.split('/')
+            const fecha = processParams.fecha.split('-')
             const day = fecha[0]
             month = fecha[1]
             year = fecha[2]
@@ -169,7 +169,7 @@ const dataOutput = async () => {
                     console.log(putJSONData)
                     
 
-                    fs.writeFileSync("C:\\Users\\Lenovo X1\\Desktop\\proyectos theeye\\BCRA\\Valor_dia_dolar\\folder1\\"+positionInColumns+'.json', putJSONData)
+                    fs.writeFileSync("C:\\deploys\\valor_dolar\\filedownload"+positionInColumns+'.json', putJSONData)
                 }
                 browser.close()
         } catch (err) {
