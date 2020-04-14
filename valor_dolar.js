@@ -169,7 +169,7 @@ const dataOutput = async () => {
                     console.log(putJSONData)
                     
 
-                    fs.writeFileSync("C:\\deploys\\valor_dolar\\filedownload"+positionInColumns+'.json', putJSONData)
+                    fs.writeFileSync("C:\\deploys\\valor_dolar\\filedownload\\"+positionInColumns+'.json', putJSONData)
                 }
                 browser.close()
         } catch (err) {
