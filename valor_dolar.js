@@ -204,10 +204,16 @@ const processDataRequest = async (day,month_year) => {
              let elementDays = (await page.$$('#tcalGrid > tbody > tr > td'))
             let dayInInnerText = await page.evaluate(elementDays => elementDays.innerText, elementDays[0])
              //let varible1 = await page.$$('#tcalGrid > tbody > tr > td')[0].innerText
-             let selectDay = parseInt(day) - 1
+             
+             if(day >= 10){
+                day = parseInt(day) - 1
+             }else{
+                day = parseInt(day)
+             }
              let countElementDays = 0
 
-            while(selectDay !== dayInInnerText){   
+             console.log(countElementDays, day)
+            while(day !== dayInInnerText){   
                 dayInInnerText = await page.evaluate(elementDays => elementDays.innerText, elementDays[countElementDays])
                 dayInInnerText  = parseInt(dayInInnerText)
                 countElementDays = countElementDays + 1                
@@ -215,7 +221,7 @@ const processDataRequest = async (day,month_year) => {
 
              const elementDay = (await page.$$('#tcalGrid > tbody > tr > td'))[countElementDays]
              await elementDay.click()
-             console.log(selectDay)
+             console.log(day)
            // tcalPrevMonth
             console.log(day, month_year)
 
