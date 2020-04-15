@@ -205,15 +205,16 @@ const processDataRequest = async (day,month_year) => {
             let dayInInnerText = await page.evaluate(elementDays => elementDays.innerText, elementDays[0])
              //let varible1 = await page.$$('#tcalGrid > tbody > tr > td')[0].innerText
              
+             let selectday
              if(day >= 10){
                 day = parseInt(day) - 1
              }else{
                 day = parseInt(day)
              }
              let countElementDays = 0
+             selectday = day -1
 
-             console.log(countElementDays, day)
-            while(day !== dayInInnerText){   
+            while(selectday !== dayInInnerText){   
                 dayInInnerText = await page.evaluate(elementDays => elementDays.innerText, elementDays[countElementDays])
                 dayInInnerText  = parseInt(dayInInnerText)
                 countElementDays = countElementDays + 1                
@@ -221,8 +222,6 @@ const processDataRequest = async (day,month_year) => {
 
              const elementDay = (await page.$$('#tcalGrid > tbody > tr > td'))[countElementDays]
              await elementDay.click()
-             console.log(day)
-           // tcalPrevMonth
             console.log(day, month_year)
 
             await page.waitForSelector('body > div.container > div.contenido > div > div > div > form > div > div:nth-child(5) > button')
@@ -249,7 +248,7 @@ const processDataRequest = async (day,month_year) => {
 
 const preparePage = async () => {
     browser = await puppeteer.launch({
-         headless: true,
+         headless: false,
         //headless: true,
         args: [
             '--no-sandbox',
