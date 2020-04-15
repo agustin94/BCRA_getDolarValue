@@ -171,6 +171,7 @@ const dataOutput = async () => {
                     fs.appendFileSync("Valor_dolar_"+processParams.fecha+'.json', putJSONData)
                 }
                 browser.close()
+                process.exit()
         } catch (err) {
             console.log(err)
             reject(err)
