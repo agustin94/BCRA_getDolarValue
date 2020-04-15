@@ -168,7 +168,7 @@ const dataOutput = async () => {
                     //const nose2 = JSON.parse(nose)
                     console.log(putJSONData)
                     
-                    fs.appendFileSync("valor_dolar_"+processParams.fecha+'.json', putJSONData)
+                    fs.appendFileSync("Valor_dolar_"+processParams.fecha+'.json', putJSONData)
                 }
                 browser.close()
         } catch (err) {
