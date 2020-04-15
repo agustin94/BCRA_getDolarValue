@@ -211,8 +211,12 @@ const processDataRequest = async (day,month_year) => {
              }else{
                 day = parseInt(day)
              }
+             if (day !== 1){
+                selectday = day -1
+             }else{
+                selectday = day 
+             }
              let countElementDays = 0
-             selectday = day -1
 
             while(selectday !== dayInInnerText){   
                 dayInInnerText = await page.evaluate(elementDays => elementDays.innerText, elementDays[countElementDays])
