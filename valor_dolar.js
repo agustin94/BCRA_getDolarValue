@@ -248,7 +248,7 @@ const processDataRequest = async (day,month_year) => {
 
 const preparePage = async () => {
     browser = await puppeteer.launch({
-         headless: false,
+         headless: true,
         //headless: true,
         args: [
             '--no-sandbox',
